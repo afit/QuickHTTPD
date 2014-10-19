@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/Project Pool"/>
+	<classpathentry sourcepath="C:/Documents and Settings/Aidan Fitzpatrick/My Documents/source/common_utils" kind="lib" path="/Project Pool/lib/common_utils.jar"/>
+	<classpathentry kind="lib" path="/Project Pool/lib/3rdparty/xerces.jar"/>
+	<classpathentry kind="lib" path="/Project Pool/lib/3rdparty/junit.jar"/>
+	<classpathentry kind="output" path="build"/>
+</classpath>

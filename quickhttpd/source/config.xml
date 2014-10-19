@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE server SYSTEM "http://www.lothianproductions.co.uk/config.dtd">
+
+<!--	This is the default ("example") configuration file for the QuickHTTPD application.
+		This configuration provides basic and insecure web serving from a filesystem.
+		Don't run the application until you understand what this configuration will do.
+		
+		Aidan Fitzpatrick <aidan@lothianproductions.co.uk>, $Revision: 1.5 $, $Date: 2004/01/02 14:24:06 $ -->
+<server>
+	<requestListeners>
+		<!--	The ServerSocketRequestListener is the standard socket listener and
+				currently supports HTTP GET and POST requests. -->
+		<requestListener classPath="uk.co.lothianproductions.httpd.listener.impl.ServerSocketRequestListener">
+			<!--	The port property specifies which port the listener should listen on. -->
+			<property name="port" value="8080" />
+			<!--	The ceiling property limits the number of concurrent requests the
+					listener will service (and consequently the number of concurrent
+					handlers that it will spawn). Leave as zero not to limit this number.
+					This listener doesn't currently support non-zero values. -->
+			<property name="ceiling" value="0" />
+		</requestListener>
+	</requestListeners>
+	<requestHandlers>
+		<!--	The HTTPRequestHandler is the standard HTTP handler, working with sockets
+				provided by a listener. -->
+		<requestHandler classPath="uk.co.lothianproductions.httpd.handler.impl.HTTPRequestHandler">
+			<!--	The gzip property is a boolean flag that specifies whether the
+					handler can compress HTTP response data for clients that support
+					gzip encoding. -->
+			<property name="gzip" value="true" />
+			<!--	The defaultType property specifies which content-type value the
+					handler should return when sending a file of indeterminate type.
+					File content-types are determined using the type-* properties. -->
+			<property name="default-type" value="text/plain" />			
+			<!--	The type-* properties provide a reverse lookup table for the handler
+					to use when identifying content-types based on requested file extensions.
+					The values can be set in the same space-delimited format that the Apache
+					HTTPD mime.types files use.
+					The values below were transformed in from the Apache HTTPD mime.types file. -->
+			<property name="type-application/andrew-inset" value="ez" />
+			<property name="type-application/mac-binhex40" value="hqx" />
+			<property name="type-application/mac-compactpro" value="cpt" />
+			<property name="type-application/mathml+xml" value="mathml" />
+			<property name="type-application/msword" value="doc" />
+			<property name="type-application/octet-stream" value="bin dms lha lzh exe class so dll" />
+			<property name="type-application/oda" value="oda" />
+			<property name="type-application/ogg" value="ogg" />
+			<property name="type-application/pdf" value="pdf" />
+			<property name="type-application/postscript" value="ai eps ps" />
+			<property name="type-application/rdf+xml" value="rdf" />
+			<property name="type-application/smil" value="smi smil" />
+			<property name="type-application/srgs" value="gram" />
+			<property name="type-application/srgs+xml" value="grxml" />
+			<property name="type-application/vnd.mif" value="mif" />
+			<property name="type-application/vnd.ms-excel" value="xls" />
+			<property name="type-application/vnd.ms-powerpoint" value="ppt" />
+			<property name="type-application/vnd.wap.wbxml" value="wbxml" />
+			<property name="type-application/vnd.wap.wmlc" value="wmlc" />
+			<property name="type-application/vnd.wap.wmlscriptc" value="wmlsc" />
+			<property name="type-application/voicexml+xml" value="vxml" />
+			<property name="type-application/x-bcpio" value="bcpio" />
+			<property name="type-application/x-cdlink" value="vcd" />
+			<property name="type-application/x-chess-pgn" value="pgn" />
+			<property name="type-application/x-cpio" value="cpio" />
+			<property name="type-application/x-csh" value="csh" />
+			<property name="type-application/x-director" value="dcr dir dxr" />
+			<property name="type-application/x-dvi" value="dvi" />
+			<property name="type-application/x-futuresplash" value="spl" />
+			<property name="type-application/x-gtar" value="gtar" />
+			<property name="type-application/x-hdf" value="hdf" />
+			<property name="type-application/x-javascript" value="js" />
+			<property name="type-application/x-koan" value="skp skd skt skm" />
+			<property name="type-application/x-latex" value="latex" />
+			<property name="type-application/x-netcdf" value="nc cdf" />
+			<property name="type-application/x-sh" value="sh" />
+			<property name="type-application/x-shar" value="shar" />
+			<property name="type-application/x-shockwave-flash" value="swf" />
+			<property name="type-application/x-stuffit" value="sit" />
+			<property name="type-application/x-sv4cpio" value="sv4cpio" />
+			<property name="type-application/x-sv4crc" value="sv4crc" />
+			<property name="type-application/x-tar" value="tar" />
+			<property name="type-application/x-tcl" value="tcl" />
+			<property name="type-application/x-tex" value="tex" />
+			<property name="type-application/x-texinfo" value="texinfo texi" />
+			<property name="type-application/x-troff" value="t tr roff" />
+			<property name="type-application/x-troff-man" value="man" />
+			<property name="type-application/x-troff-me" value="me" />
+			<property name="type-application/x-troff-ms" value="ms" />
+			<property name="type-application/x-ustar" value="ustar" />
+			<property name="type-application/x-wais-source" value="src" />
+			<property name="type-application/xhtml+xml" value="xhtml xht" />
+			<property name="type-application/xslt+xml" value="xslt" />
+			<property name="type-application/xml" value="xml xsl" />
+			<property name="type-application/xml-dtd" value="dtd" />
+			<property name="type-application/zip" value="zip" />
+			<property name="type-audio/basic" value="au snd" />
+			<property name="type-audio/midi" value="mid midi kar" />
+			<property name="type-audio/mpeg" value="mpga mp2 mp3" />
+			<property name="type-audio/x-aiff" value="aif aiff aifc" />
+			<property name="type-audio/x-mpegurl" value="m3u" />
+			<property name="type-audio/x-pn-realaudio" value="ram rm" />
+			<property name="type-audio/x-pn-realaudio-plugin" value="rpm" />
+			<property name="type-audio/x-realaudio" value="ra" />
+			<property name="type-audio/x-wav" value="wav" />
+			<property name="type-chemical/x-pdb" value="pdb" />
+			<property name="type-chemical/x-xyz" value="xyz" />
+			<property name="type-image/bmp" value="bmp" />
+			<property name="type-image/cgm" value="cgm" />
+			<property name="type-image/gif" value="gif" />
+			<property name="type-image/ief" value="ief" />
+			<property name="type-image/jpeg" value="jpeg jpg jpe" />
+			<property name="type-image/png" value="png" />
+			<property name="type-image/svg+xml" value="svg" />
+			<property name="type-image/tiff" value="tiff tif" />
+			<property name="type-image/vnd.djvu" value="djvu djv" />
+			<property name="type-image/vnd.wap.wbmp" value="wbmp" />
+			<property name="type-image/x-cmu-raster" value="ras" />
+			<property name="type-image/x-icon" value="ico" />
+			<property name="type-image/x-portable-anymap" value="pnm" />
+			<property name="type-image/x-portable-bitmap" value="pbm" />
+			<property name="type-image/x-portable-graymap" value="pgm" />
+			<property name="type-image/x-portable-pixmap" value="ppm" />
+			<property name="type-image/x-rgb" value="rgb" />
+			<property name="type-image/x-xbitmap" value="xbm" />
+			<property name="type-image/x-xpixmap" value="xpm" />
+			<property name="type-image/x-xwindowdump" value="xwd" />
+			<property name="type-model/iges" value="igs iges" />
+			<property name="type-model/mesh" value="msh mesh silo" />
+			<property name="type-model/vrml" value="wrl vrml" />
+			<property name="type-text/calendar" value="ics ifb" />
+			<property name="type-text/css" value="css" />
+			<property name="type-text/html" value="html htm" />
+			<property name="type-text/plain" value="asc txt" />
+			<property name="type-text/richtext" value="rtx" />
+			<property name="type-text/rtf" value="rtf" />
+			<property name="type-text/sgml" value="sgml sgm" />
+			<property name="type-text/tab-separated-values" value="tsv" />
+			<property name="type-text/vnd.wap.wml" value="wml" />
+			<property name="type-text/vnd.wap.wmlscript" value="wmls" />
+			<property name="type-text/x-setext" value="etx" />
+			<property name="type-video/mpeg" value="mpeg mpg mpe" />
+			<property name="type-video/quicktime" value="qt mov" />
+			<property name="type-video/vnd.mpegurl" value="mxu" />
+			<property name="type-video/x-msvideo" value="avi" />
+			<property name="type-video/x-sgi-movie" value="movie" />
+			<property name="type-x-conference/x-cooltalk" value="ice" />
+		</requestHandler>
+		<!--	The SocketRequestHandler is a cut-down request handler that interprets the
+				first chunk of data received as a document URI and fetches it accordingly. -->
+		<!--<requestHandler classPath="uk.co.lothianproductions.httpd.handler.impl.SocketRequestHandler" />-->
+	</requestHandlers>
+	<documentSources>
+		<!--	The EmptyDocumentSource provides empty (blank) documents, irrespective
+				of the document request URI. This source is be useful for testcasing
+				or log-generation. -->
+		<!--<documentSource classPath="uk.co.lothianproductions.httpd.document.impl.EmptyDocumentSource" />-->
+		<!--	The PropertiesDocumentSource provides simple character responses, mapping
+				the request URI to a property name in the documentSource configuration. -->
+		<!--<documentSource classPath="uk.co.lothianproductions.httpd.document.impl.PropertiesDocumentSource">-->
+				<!-- Each property entry represents a document. -->
+				<!--<property name="/" value="This is the PropertiesDocumentSource." />
+		</documentSource>-->
+		<documentSource classPath="uk.co.lothianproductions.httpd.document.impl.HTTPDocumentSource">
+			<property name="gzip" value="true" />
+			<property name="hostname" value="http://weld.lothianproductions.co.uk" />
+		</documentSource>
+		<!--	The ResourceDocumentSource provides documents from the application's
+				classpath. Resource files embedded in the application Jars can be
+				easily served this way but in certain cases the class should be subclassed
+				to prevent .class and configuration files (such as this one) from being
+				directly accessible to clients. -->
+		<documentSource classPath="uk.co.lothianproductions.httpd.document.impl.ResourceDocumentSource" />
+		<!--	The FilesystemDocumentSource is a filesystem bridge, allowing the application
+				to serve files directly from the filesystem. This can be extremely insecure
+				unless configured very tightly. -->
+		<!--<documentSource classPath="uk.co.lothianproductions.httpd.document.impl.FilesystemDocumentSource">-->
+			<!--	The document root property provides for a value to be affixed to document
+					URI requests, allowing for a "document root" to be set for all requests. -->
+		<!--	<property name="documentRoot" value="c:" />
+		</documentSource>-->
+	</documentSources>
+</server>

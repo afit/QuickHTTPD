@@ -1,0 +1,35 @@
+
+<!--	The QuickHTTPD application configuration DTD.
+
+		Aidan Fitzpatrick <aidan@lothianproductions.co.uk>, $Revision: 1.1 $, $Date: 2003/11/29 18:32:13 $ -->
+		
+<!--	The root server element. -->
+<!ELEMENT server (requestListeners, requestHandlers, documentSources)>
+
+	<!--	A property element. -->
+	<!ELEMENT property EMPTY>
+		<!ATTLIST property
+			name CDATA #REQUIRED
+			value CDATA #REQUIRED
+		>
+	
+	<!--	The request listeners group. -->
+	<!ELEMENT requestListeners (requestListener+)>
+		<!ELEMENT requestListener (property*)>
+			<!ATTLIST requestListener
+				classPath CDATA #REQUIRED
+			>
+	
+	<!--	The request handlers group. -->
+	<!ELEMENT requestHandlers (requestHandler+)>
+		<!ELEMENT requestHandler (property*)>
+			<!ATTLIST requestHandler
+				classPath CDATA #REQUIRED
+			>
+	
+	<!--	The document sources group. -->
+	<!ELEMENT documentSources (documentSource+)>
+		<!ELEMENT documentSource (property*)>
+			<!ATTLIST documentSource
+				classPath CDATA #REQUIRED
+			>

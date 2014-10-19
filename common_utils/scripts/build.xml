@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<!-- Aidan Fitzpatrick, $Revision: 1.10 $, $Date: 2003/12/11 17:38:20 $ -->
+
+<project	name=		"Common Utilities"
+			default=	"dist"
+			basedir=	".."
+>
+	<description>Common Utilities build script</description>
+
+	<property name="source"			value="source"/>
+	<property name="build"			value="build"/>
+	<property name="dist"			value="../project_pool/lib/common_utils.jar"/>
+	<property name="doc"			value="docs/generated"/>
+	<property name="jars"			value="../project_pool/lib/3rdparty/junit.jar"/>
+	<property name="deprecation"	value="on"/>
+	<property name="debug"			value="on"/>
+	<property name="optimize"		value="on"/>
+
+	<target	name=		"compile"
+			description="Compiles"
+	>
+		<mkdir dir="${build}"/>
+		<javac	srcdir="${source}" destdir="${build}" classpath="${jars}" encoding="utf-8"
+				debug="${debug}" deprecation="${deprecation}" optimize="${optimize}"
+		/>
+	</target>
+
+	<target	name=		"dist"
+			depends=	"compile"
+			description="Builds the Jar for distribution"
+	>
+		<jar jarfile="${dist}" basedir="${build}"/>
+	</target>
+
+	<target	name=		"test"
+			depends=	"dist"
+			description="Runs the testcases"
+	>
+		<junit haltonfailure="true" printsummary="withOutAndErr">
+			<test name="uk.co.lothianproductions.util.testcases.TestCases" />
+			<classpath>
+				<pathelement path="${dist}:${jars}"/>
+			</classpath>
+		</junit>
+	</target>
+
+	<target	name=		"clean"
+			description="Cleans the build environment"
+	>
+		<delete dir="${build}"/>
+		<delete file="${dist}"/>
+		<delete dir="${doc}"/>
+	</target>
+
+	<target name=		"doc"
+			description="Generates the documentation"
+	>
+		<mkdir dir="${doc}"/>
+		<javadoc sourcepath="${source}" destdir="${doc}" packagenames="
+			*
+		" author="on" windowtitle="Common Utilities API documentation" classpath="${jars}">
+		</javadoc>
+	</target>
+</project>

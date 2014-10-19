@@ -1,0 +1,6 @@
+dist
+build
+core.log
+exception.log
+http_access.log
+http_error.log
